@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Ship it
-      uses: actions/cowsays-action@master
+      uses: mscoutermarsh/cowsays-action@master
       with:
         text: 'ship ship ship!'
         color: 'red'
