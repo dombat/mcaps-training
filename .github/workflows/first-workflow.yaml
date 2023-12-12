@@ -31,7 +31,7 @@ cow:
     runs-on: ubuntu-latest
     steps:
     - name: Ship it
-      uses: mscoutermarsh/cowsays-action@master
+      uses: actions/cowsays-action@master
       with:
         text: 'ship ship ship!'
         color: 'red'
