@@ -26,10 +26,12 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
-
+cow:
+    name: Cowsays
+    runs-on: ubuntu-latest
     steps:
-    - name: Cowsays
-      uses: actions/cowsays-action@master
+    - name: Ship it
+      uses: mscoutermarsh/cowsays-action@master
       with:
-        text: "Ready for prod–ship it!"
-        color: magenta
+        text: 'ship ship ship!'
+        color: 'red'
