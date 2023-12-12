@@ -2,6 +2,8 @@ name: First Workflow
 
 on: 
   workflow_dispatch:
+  issues:
+    types: [opened]
 
 jobs:
   build:
@@ -26,8 +28,8 @@ jobs:
 
   job2:
     needs: job1
-    name: Cowsays
     runs-on: ubuntu-latest
+
     steps:
     - name: Ship it
       uses: mscoutermarsh/cowsays-action@master
