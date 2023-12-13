@@ -18,6 +18,8 @@ namespace RazorPagesTestSample.Pages
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+
+            //just making a chnage to trigger CI
         }
     }
 }
