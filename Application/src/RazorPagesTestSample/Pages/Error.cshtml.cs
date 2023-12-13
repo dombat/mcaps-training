@@ -19,7 +19,7 @@ namespace RazorPagesTestSample.Pages
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
 
-            //just making a chnage to trigger CI
+            //just making a chnage to trigger CI 2
         }
     }
 }
