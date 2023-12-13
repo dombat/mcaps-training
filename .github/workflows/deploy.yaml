@@ -1,29 +1,34 @@
-name: Deploy Workflow
-
-on: 
-  workflow_dispatch:
-
+name: Deploy to Azure
+ 
+on:
+    workflow_dispatch:
+      inputs:
+        appenv:
+          type: choice
+          description: 'Choose the target environment'
+          options:
+            - dev
+            - test
+            - prod
+ 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Deploy ARM Template
-      uses: azure/arm-deploy@v1
-      with:
-        scope: resourcegroup
-        subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
-        resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
-        template: ./InfrastructureAsCode/main.bicep
-        
-
-    - name: Run a one-line script
-      run: echo Deploying...
+    deploy:
+        runs-on: ubuntu-latest
+ 
+        steps:
+            - name: 'Checkout code'
+              uses: actions/checkout@v2
+ 
+            - name: 'Login to Azure'
+              uses: azure/login@v1
+              with:
+                    creds: ${{ secrets.AZURE_CREDENTIALS }}
+ 
+            - name: 'Deploy ARM Template'
+              uses: azure/arm-deploy@v1
+              with:
+                    subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+                    resourceGroupName: ${{ secrets.AZURE_RG }}
+                    template: .\InfrastructureAsCode\main.bicep
+                    parameters: environment=${{ github.event.inputs.appenv }}
+ 
