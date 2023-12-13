@@ -1,4 +1,4 @@
-name: .NET CI
+name: Docker Stuff
 
 env:
   registryName: nhdf36dopylbympnpreg.azurecr.io
